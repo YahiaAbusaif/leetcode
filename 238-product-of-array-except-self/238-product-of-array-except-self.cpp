@@ -5,7 +5,8 @@ public:
         for(int index=0; index<nums.size();index++){
             if(nums[index]!=0)
                 ans*=nums[index];
-            countZero+=(nums[index]==0);
+            else
+                countZero++;
         }
         vector<int> result(nums.size(),0);
         if(countZero>1)
