@@ -5,10 +5,7 @@ public:
         unordered_map<int,int> count; 
         for(int index=0;index<nums.size();index++){
             sum+=nums[index];
-            if(count.find(sum)!=count.end())
-                count[sum]++;
-            else
-                count[sum]=1;
+            count[sum]+=1;
         }
         ans=count[k];
         sum=0;
