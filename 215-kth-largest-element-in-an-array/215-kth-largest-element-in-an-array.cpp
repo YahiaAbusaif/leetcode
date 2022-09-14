@@ -1,19 +1,26 @@
 class Solution {
 public:
     int findKthLargest(vector<int>& nums, int k) {
-        int arr[20001];
-        memset(arr,0,sizeof(arr));
-        int index=0;
+        int mn=1e5,mx=-1e5,index=0, sum=0, range;
+
         for(;index<nums.size();index++)
         {
-            arr[nums[index]+10000]++;
+            mn=min(mn,nums[index]),mx=max(mx,nums[index]);
         }
-        index=20000;
+        range=mx-mn;
+        vector<int> array(range+1,0);
+        index=0;
+        for(;index<nums.size();index++)
+        {
+            array[nums[index]-mn]++;
+        }
+        
+        index=range;
         for(;index>=0;index--){
-            if(k-arr[index]<=0)
-                return index-10000;
-            k-=arr[index];
+            sum+=array[index];
+            if(sum>=k)
+                return index+mn;
         }
-        return index-10000;
+        return index+mn;
     }
 };
