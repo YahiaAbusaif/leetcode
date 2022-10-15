@@ -23,9 +23,11 @@ public:
         if(nums.size()==cnt.size())
             return nums;
         
+        // binary search is o(mlog(m)) where m is the number of unique values also sort values by count number
+        // will result in the same complixty but with more space 
         int l=1,r=100001,mid,ans;
         while(l+1<r){
-            mid = (l+r)/2;
+            mid = (l+r)>>1;
             ans= countAboveN(cnt,mid);
             if(ans==k){
                 break;
